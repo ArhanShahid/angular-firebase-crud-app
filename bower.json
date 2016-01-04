@@ -1,0 +1,17 @@
+{
+  "name": "Test App",
+  "version": "0.0.0",
+  "authors": [
+    "Arhan Shahid"
+  ],
+  "description": "",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-resource": "~1.4.5",
+    "angularfire": "~1.1.3",
+    "bootstrap": "~3.3.5",
+    "firebase": "~2.3.2",
+    "jquery": "~2.1.4"
+  }
+}
