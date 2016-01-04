@@ -1,5 +1,5 @@
 angular.module('mainApp',['ngResource','firebase'])
-    .constant('FIREBASE_URL','https://arhantodo.firebaseio.com/')
+    .constant('FIREBASE_URL','<< FIREBASE_URL >>')
     .config(function() {})
     .factory('myService', function ($firebaseArray,FIREBASE_URL) {
         var fb =  new Firebase(FIREBASE_URL);
