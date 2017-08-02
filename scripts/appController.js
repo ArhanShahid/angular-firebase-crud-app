@@ -26,25 +26,41 @@ app.controller('appController', ['$scope', 'fbService', function ($scope, fbServ
             $scope.$apply();
         });
     }
+
     getData();
 
-    $scope.save = function () {
-        data.push({name: 'Arhan', contact: '0333333333'});
-        getData();
+    $scope.save = function (obj) {
+        if (obj.name && obj.contact) {
+            data.push({name: obj.name, contact: obj.contact});
+            getData();
+        } else {
+            alert("Required data missing.")
+        }
+
     };
     $scope.enableEdit = function (data) {
+        $scope.editData = {
+            id: data.id,
+            name: data.name,
+            contact: data.contact
+        };
         $scope.showEdit = true;
-        $scope.editData.$id = data.id;
-        $scope.editData.name = data.name;
-        $scope.editData.contact = data.contact;
 
     };
 
-    $scope.edit = function (name) {
-        console.log("Edit : ", name.$id);
-        // fbService.update(name).then(function (result) {
-        //     $scope.showEdit = false;
-        // });
+    $scope.edit = function (obj) {
+        if (obj.id && obj.name && obj.contact) {
+            data.child(obj.id).set({name: obj.name, contact: obj.contact});
+            $scope.editData = {
+                id: null,
+                name: null,
+                contact: null
+            };
+            $scope.showEdit = false;
+             getData();
+        } else {
+            alert("Required data missing.")
+        }
     };
 
     $scope.delete = function (obj) {
@@ -56,7 +72,7 @@ app.controller('appController', ['$scope', 'fbService', function ($scope, fbServ
 
     function search(nameKey, myArray) {
         for (var i = 0; i < myArray.length; i++) {
-            if (myArray[i].id == nameKey) {
+            if (myArray[i].id === nameKey) {
                 return i;
             }
         }

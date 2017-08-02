@@ -17,17 +17,15 @@
 </head>
 
 <body ng-app="app" ng-controller="appController">
-
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
             <div ng-if="!showEdit">
                 <br/>
                 <br/>
-                <input type="text" class="form-control" ng-model="newData.first" placeholder="Enter name...">
+                <input type="text" class="form-control" ng-model="newData.name" placeholder="Enter name...">
                 <br/>
-                <input type="text" class="form-control" ng-model="newData.last" placeholder="Enter contact...">
+                <input type="text" class="form-control" ng-model="newData.contact" placeholder="Enter contact...">
                 <br/>
                 <input type="button" class="btn btn-default" ng-click="save(newData)" value="Save">
                 <br/>
@@ -36,9 +34,9 @@
             <div ng-if="showEdit">
                 <br/>
                 <br/>
-                <input type="text" class="form-control" ng-model="editData.first">
+                <input type="text" class="form-control" ng-model="editData.name">
                 <br/>
-                <input type="text" class="form-control" ng-model="editData.last">
+                <input type="text" class="form-control" ng-model="editData.contact">
                 <br/>
                 <input type="button" class="btn btn-default" value="update" ng-click="edit(editData)">
                 <br/>
@@ -69,14 +67,9 @@
                         <input type="button" class="btn btn-danger btn-xs" value="delete" ng-click="delete(data)">
                     </td>
                 </tr>
-
-
             </table>
         </div>
     </div>
-
 </div>
-
 </body>
-
 </html>
