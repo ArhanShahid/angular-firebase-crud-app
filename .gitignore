@@ -1,7 +1,5 @@
-
 bower_components
 node_modules
 *.idea
 *.zip
 *.rar
-server.js
