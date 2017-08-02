@@ -7,7 +7,6 @@
   "description": "Angular firebase crud app",
   "dependencies": {
     "angular": "1.6.x",
-    "angular-resource": "1.6.x",
     "angularfire": "~2.3.0",
     "bootstrap": "~3.3.7",
     "jquery": "~3.2.1",

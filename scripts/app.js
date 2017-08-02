@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource', 'firebase']);
+var app = angular.module('app', ['firebase']);
 
 app.constant('FIREBASE_CONFIG', {
     apiKey: "AIzaSyB2T6Q7jrx-lx0bxHmhvMxFSIHHW9ldgsg",

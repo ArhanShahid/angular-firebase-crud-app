@@ -1,29 +1,29 @@
-app.controller('appController', ['$scope', 'myService', function ($scope, myService) {
+app.controller('appController', ['$scope', 'fbService', function ($scope, fbService) {
 
-    $scope.nameList = myService.all;
-    console.log("ALL");
+    $scope.dataList = [];
+    $scope.nameList = [];
 
+    var data = fbService.data;
+    data.once('value').then(function (res) {
 
-    // firebase.database().ref('users/').set({
-    //     username: 'Arhan',
-    //     email: 'a@a.com'
-    // });
-    var user =  firebase.database().ref('users/');
-
-    user.on('child_added', function(data) {
-        console.log('child_added');
-        console.log(data.val());
+        res.forEach(function (item) {
+            $scope.dataList.push({
+                id: item.key,
+                name: item.val().name,
+                contact: item.val().contact
+            })
+        });
+        $scope.$apply();
     });
-    //
-    // user.push({name: 'Arhan', email: 'a@a.com'});
 
-    // var aa  = firebase.database().ref('users/').once('value').then(function(users) {
-    //     console.log(users.val());
-    // });
 
-    var aax  = firebase.database().ref('users/').once('value').then(function(users) {
-        console.log(users.val());
+    data.on('child_added', function (res) {
+        //  console.log('child_added');
+        //  console.log(res.key);
+        //  console.log(res.val());
+        // $scope.dataList = res.val();
     });
+
 
     $scope.showEdit = false;
 
@@ -40,7 +40,7 @@ app.controller('appController', ['$scope', 'myService', function ($scope, myServ
     };
 
     $scope.save = function () {
-        user.push({name: 'Arhan', email: 'a@a.com'});
+        data.push({name: 'Arhan', contact: '0333333333'});
         // $scope.nameList.$add({first: user.first, last: user.last}).then(function (res) {
         //     console.log("Add Responce");
         //     console.log(res);
@@ -60,12 +60,12 @@ app.controller('appController', ['$scope', 'myService', function ($scope, myServ
 
     $scope.edit = function (name) {
         console.log("Edit : ", name.$id);
-        myService.update(name).then(function (result) {
-            $scope.showEdit = false;
-        });
+        // fbService.update(name).then(function (result) {
+        //     $scope.showEdit = false;
+        // });
     };
 
     $scope.delete = function (name) {
-        myService.delete(name.$id);
+        // fbService.delete(name.$id);
     }
 }]);

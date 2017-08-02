@@ -7,9 +7,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- JavaScript Libraries -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <script src="scripts/app.js"></script>
@@ -24,62 +22,51 @@
 
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-
-
             <div ng-if="!showEdit">
                 <br/>
                 <br/>
-
                 <input type="text" class="form-control" ng-model="name.first" placeholder="Enter First Name">
                 <br/>
-
-                <input type="text"  class="form-control" ng-model="name.last" placeholder="Enter Last Name">
+                <input type="text" class="form-control" ng-model="name.last" placeholder="Enter Last Name">
                 <br/>
-
                 <input type="button" class="btn btn-default" ng-click="save(name)" value="Save">
-
                 <br/>
                 <br/>
             </div>
             <div ng-if="showEdit">
                 <br/>
                 <br/>
-
                 <input type="text" class="form-control" ng-model="editname.first">
                 <br/>
-
-                <input type="text"  class="form-control" ng-model="editname.last">
+                <input type="text" class="form-control" ng-model="editname.last">
                 <br/>
                 <input type="button" class="btn btn-default" value="update" ng-click="edit(editname)">
-
                 <br/>
                 <br/>
             </div>
-
-
             <table class="table">
                 <tr>
                     <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Name</th>
+                    <th>Contact</th>
                     <th>Options</th>
                 </tr>
-                <tr ng-repeat="name in nameList">
+                <tr ng-repeat="data in dataList">
 
                     <td>
-                        {{name.$id}}
+                        {{data.id}}
                     </td>
                     <td>
-                        {{name.first}}
+                        {{data.name}}
                     </td>
                     <td>
-                       {{name.last}}
+                        {{data.contact}}
                     </td>
                     <td>
                         <input type="button" class="btn btn-info btn-xs" value="edit"
                                ng-if="!showEdit"
-                               ng-click="enableEdit(name)">
-                        <input type="button" class="btn btn-danger btn-xs" value="delete" ng-click="delete(name)">
+                               ng-click="enableEdit(data)">
+                        <input type="button" class="btn btn-danger btn-xs" value="delete" ng-click="delete(data)">
                     </td>
                 </tr>
 
