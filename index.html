@@ -25,22 +25,22 @@
             <div ng-if="!showEdit">
                 <br/>
                 <br/>
-                <input type="text" class="form-control" ng-model="name.first" placeholder="Enter First Name">
+                <input type="text" class="form-control" ng-model="newData.first" placeholder="Enter name...">
                 <br/>
-                <input type="text" class="form-control" ng-model="name.last" placeholder="Enter Last Name">
+                <input type="text" class="form-control" ng-model="newData.last" placeholder="Enter contact...">
                 <br/>
-                <input type="button" class="btn btn-default" ng-click="save(name)" value="Save">
+                <input type="button" class="btn btn-default" ng-click="save(newData)" value="Save">
                 <br/>
                 <br/>
             </div>
             <div ng-if="showEdit">
                 <br/>
                 <br/>
-                <input type="text" class="form-control" ng-model="editname.first">
+                <input type="text" class="form-control" ng-model="editData.first">
                 <br/>
-                <input type="text" class="form-control" ng-model="editname.last">
+                <input type="text" class="form-control" ng-model="editData.last">
                 <br/>
-                <input type="button" class="btn btn-default" value="update" ng-click="edit(editname)">
+                <input type="button" class="btn btn-default" value="update" ng-click="edit(editData)">
                 <br/>
                 <br/>
             </div>
